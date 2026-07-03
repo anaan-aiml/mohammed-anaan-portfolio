@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /private/tmp/claude-501 -newer /Users/anaan/Downloads/annuportfolio-main/public/preview.png -iname \"*.png\" -o -newer /Users/anaan/Downloads/annuportfolio-main/public/preview.png -iname \"*.jpg\" -o -newer /Users/anaan/Downloads/annuportfolio-main/public/preview.png -iname \"*.jpeg\" 2>/dev/null | grep -v node_modules | head -30)",
+      "Bash(find /Users/anaan/.claude /private/tmp/claude-501 /Users/anaan/Downloads -maxdepth 4 \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.webp\" \\\\\\) -mmin -15 2>/dev/null | grep -v node_modules)",
+      "Bash(python3)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -sI http://localhost:8080/assets/resume.pdf)",
+      "Bash(ls -la \"$HOME/Downloads\" | head -40)"
+    ]
+  }
+}
