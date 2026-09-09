@@ -1,0 +1,252 @@
+/* Work — "The Creative Universe": two counter-rotating rings of skill cards
+   around a glowing core, then a plain grouped list for the record. */
+
+.work {
+  position: relative;
+  min-height: 100svh;
+  padding: calc(var(--hdr-h) + clamp(22px, 5vh, 56px)) var(--edge) clamp(60px, 12vh, 120px);
+  background:
+    radial-gradient(80% 55% at 50% 46%, rgba(199, 24, 26, 0.26), transparent 70%),
+    #000;
+  overflow: hidden;
+  text-align: center;
+}
+
+.work__over {
+  margin: 0 0 clamp(10px, 2vh, 18px);
+  font-family: var(--ui);
+  font-size: clamp(10px, 1.1vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.work__over::before { content: "••• "; color: var(--dimmer); }
+
+.work__title {
+  margin: 0;
+  font-family: var(--disp);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: clamp(34px, 6.4vw, 76px);
+}
+
+.work__sub {
+  margin: clamp(12px, 2vh, 20px) 0 0;
+  font-family: var(--ui);
+  font-size: clamp(9px, 1vw, 12px);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* -- the orbit ---------------------------------------------------------- */
+
+.universe {
+  --u: min(640px, 88vw);
+  position: relative;
+  width: var(--u);
+  height: var(--u);
+  margin: clamp(18px, 3.5vh, 40px) auto clamp(36px, 7vh, 80px);
+}
+
+.universe__core {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 27%;
+  height: 27%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12em;
+  border-radius: 50%;
+  font-family: var(--disp);
+  font-size: clamp(20px, 3.4vw, 40px);
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  background: radial-gradient(circle at 50% 40%, rgba(222, 27, 28, 0.55), rgba(120, 10, 12, 0.15) 70%, transparent);
+  box-shadow: 0 0 60px rgba(222, 27, 28, 0.45), inset 0 0 30px rgba(255, 90, 60, 0.25);
+  animation: corePulse 5s ease-in-out infinite alternate;
+}
+@keyframes corePulse {
+  from { box-shadow: 0 0 44px rgba(222, 27, 28, 0.35), inset 0 0 24px rgba(255, 90, 60, 0.2); }
+  to   { box-shadow: 0 0 78px rgba(222, 27, 28, 0.55), inset 0 0 34px rgba(255, 90, 60, 0.32); }
+}
+
+.orbit {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border: 1px dashed rgba(237, 237, 237, 0.1);
+  border-radius: 50%;
+  animation: drift linear infinite;
+}
+.orbit--1 { width: 62%;  height: 62%;  animation-duration: 64s; }
+.orbit--2 { width: 96%;  height: 96%;  animation-duration: 104s; animation-direction: reverse; }
+
+/* the rings turn very slowly; each card counter-turns at the same rate so its
+   text always stays level */
+@keyframes drift { to { transform: rotate(360deg); } }
+@keyframes level { to { transform: rotate(-360deg); } }
+
+.orbit__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform:
+    rotate(calc(var(--n) / var(--count) * 360deg))
+    translateY(calc(-1 * var(--rad)))
+    rotate(calc(var(--n) / var(--count) * -360deg));
+}
+.orbit--1 .orbit__item { --rad: calc(var(--u) * 0.31); }
+.orbit--2 .orbit__item { --rad: calc(var(--u) * 0.48); }
+
+.orbit__item b {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 11px;
+  border: 1px solid rgba(237, 237, 237, 0.16);
+  border-radius: 12px;
+  background: rgba(10, 10, 12, 0.88);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  animation: level linear infinite;
+  transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+.orbit--1 .orbit__item b { animation-duration: 64s; }
+.orbit--2 .orbit__item b { animation-duration: 104s; animation-direction: reverse; }
+
+.orbit__item b img {
+  width: clamp(22px, 2.6vw, 30px);
+  height: clamp(22px, 2.6vw, 30px);
+  object-fit: contain;
+}
+.orbit__item b i {
+  font-family: var(--ui);
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(8px, 0.85vw, 10px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(237, 237, 237, 0.78);
+  white-space: nowrap;
+}
+
+.orbit__item b:hover {
+  border-color: var(--ink);
+  background: rgba(30, 8, 9, 0.92);
+  box-shadow: 0 0 24px rgba(222, 27, 28, 0.4);
+}
+.orbit__item b:hover i { color: var(--paper); }
+
+/* -- the plain record -------------------------------------------------- */
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 4vw, 54px);
+  max-width: 940px;
+  margin: 0 auto;
+  text-align: left;
+}
+.skills__group h2 {
+  margin: 0 0 14px;
+  font-family: var(--ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.skills__group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.skills__group li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--ui);
+  font-weight: 300;
+  font-size: clamp(13px, 1.4vw, 16px);
+  color: #cdcdcd;
+}
+.skills__group li img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.85;
+  flex: 0 0 auto;
+}
+
+.work__foot {
+  max-width: 640px;
+  margin: clamp(40px, 8vh, 90px) auto 0;
+  font-family: var(--ui);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dim);
+}
+.work__foot a { color: var(--paper); text-decoration-color: rgba(237,237,237,.4); text-underline-offset: 3px; }
+.work__foot a:hover { color: var(--ink-hot); }
+
+/* -- responsive ------------------------------------------------------- */
+
+/* Tablet: shrink the orbit a little. */
+@media (max-width: 1000px) {
+  .universe { --u: min(560px, 84vw); }
+  .skills { gap: 30px; }
+}
+
+/* Phone: the orbit doesn't survive a narrow column — swap it for a plain
+   grid of colour logo chips, and lay the record out as chips too. */
+@media (max-width: 760px) {
+  .universe { display: none; }
+
+  .skills {
+    grid-template-columns: 1fr;
+    max-width: 460px;
+    gap: clamp(26px, 6vw, 40px);
+    margin: clamp(6px, 3vh, 24px) auto 0;
+    text-align: left;
+  }
+  .skills__group h2 { margin-bottom: 16px; }
+  .skills__group ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skills__group li {
+    gap: 8px;
+    padding: 8px 13px 8px 10px;
+    border: 1px solid rgba(237, 237, 237, 0.16);
+    border-radius: 999px;
+    background: rgba(237, 237, 237, 0.03);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--paper);
+  }
+  .skills__group li img { width: 18px; height: 18px; opacity: 1; }
+
+  .work__foot { margin-top: clamp(36px, 8vh, 70px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit, .orbit__item b, .universe__core { animation: none !important; }
+}

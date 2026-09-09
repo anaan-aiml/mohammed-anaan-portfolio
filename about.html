@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About — Mohammed Anaan</title>
+<meta name="description" content="Mohammed Anaan — third-year Computer Science (AI &amp; ML) student at St. Peter's Engineering College, Hyderabad, full-stack developer, and Rotaract District 3150 photographer.">
+<meta name="theme-color" content="#000000">
+<link rel="preload" href="public/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="public/media/profile.jpg">
+<link rel="stylesheet" href="src/styles/site.css">
+<link rel="stylesheet" href="src/styles/about.css">
+</head>
+<body data-page="about">
+
+<header class="hdr">
+  <a class="hdr__mark" href="index.html" aria-label="Mohammed Anaan, home">Anaan</a>
+  <span class="hdr__div" aria-hidden="true"></span>
+  <p class="hdr__roles"><span>AI · ML</span><span>Full-Stack</span><span>Creative</span></p>
+  <nav class="hdr__nav" aria-label="Primary">
+    <ul>
+      <li><a href="index.html" data-nav data-target="home">Home</a></li>
+      <li><a href="tech-stack.html" data-nav data-target="tech">Tech Stack</a></li>
+      <li><a href="about.html" data-nav data-target="about">About</a></li>
+      <li><a href="projects.html" data-nav data-target="projects">Projects</a></li>
+      <li><a href="contact.html" data-nav data-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="hdr__meta">
+    <span class="hdr__metaLabel">Portfolio — MMXXVI</span>
+    <span class="hdr__pips" aria-hidden="true"><i></i><i></i><i></i></span>
+  </div>
+  <button class="hdr__burger" id="burger" aria-expanded="false" aria-controls="menu">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    <span class="sr-only">Menu</span>
+  </button>
+</header>
+
+<nav class="menu" id="menu" aria-label="Primary" hidden>
+  <ul>
+    <li><a href="index.html" data-nav data-target="home">Home</a></li>
+    <li><a href="tech-stack.html" data-nav data-target="tech">Tech Stack</a></li>
+    <li><a href="about.html" data-nav data-target="about">About</a></li>
+    <li><a href="projects.html" data-nav data-target="projects">Projects</a></li>
+    <li><a href="contact.html" data-nav data-target="contact">Contact</a></li>
+  </ul>
+  <p class="menu__tag">••• Welcome to my world •••</p>
+</nav>
+
+<main class="page" id="main">
+  <section class="about" aria-labelledby="aboutTitle">
+    <div class="about__wrap">
+      <p class="about__over">About</p>
+      <h1 class="about__title" id="aboutTitle">
+        Hi, I&rsquo;m <b>Anaan</b> &mdash; I build things<br>that solve real problems.
+      </h1>
+
+      <div class="about__body">
+        <p>
+          I&rsquo;m a third-year B.Tech Computer Science &amp; Engineering student
+          specializing in Artificial Intelligence and Machine Learning at
+          St.&nbsp;Peter&rsquo;s Engineering College, Hyderabad.
+        </p>
+        <p>
+          I&rsquo;m passionate about AI/ML, full-stack web development, and emerging
+          technologies, and I enjoy building practical projects that solve
+          real-world problems. I&rsquo;ve worked with Python, Java, React, Node.js,
+          Flask, MongoDB, Spring Boot, and AI/ML frameworks, and I&rsquo;ve gained
+          industry exposure through internships in AI/ML and web development
+          &mdash; building applications and sharpening my problem-solving.
+        </p>
+        <p>
+          Alongside academics I take part in hackathons, technical projects, and
+          student organizations. In Rotaract District&nbsp;3150 I currently serve
+          as <b>District Director &ndash; Photographer</b> for the 2026&ndash;27
+          Rotary Year, which has grown my leadership, communication, teamwork,
+          event management, and creative skills.
+        </p>
+        <p>
+          My goal is to build a strong career in AI/ML and software development
+          while continuously learning and working on innovative technologies.
+          In the long term I&rsquo;m also interested in pursuing a Master&rsquo;s
+          in Artificial Intelligence.
+        </p>
+        <p>
+          Overall &mdash; curious, creative, and technology-driven. I like
+          learning, building, and taking on new challenges.
+        </p>
+      </div>
+
+      <div class="about__actions">
+        <button type="button" class="btn btn--solid" data-open-card>
+          <span aria-hidden="true">◈</span> Show card
+        </button>
+        <a class="btn btn--ghost" href="public/doc/resume.pdf" target="_blank" rel="noopener">
+          <span aria-hidden="true">↓</span> Download résumé
+        </a>
+      </div>
+
+      <dl class="about__facts">
+        <div><dt>Education</dt><dd>B.Tech CSE (AI &amp; ML) · St. Peter&rsquo;s Engineering College, Hyderabad</dd></div>
+        <div><dt>Focus</dt><dd>AI / ML · Full-stack web development</dd></div>
+        <div><dt>Leadership</dt><dd>Rotaract District 3150 — District Director, Photographer (2026&ndash;27)</dd></div>
+        <div><dt>Next</dt><dd>Master&rsquo;s in Artificial Intelligence</dd></div>
+      </dl>
+
+      <p class="about__more">
+        <a href="tech-stack.html">See the stack →</a>
+        &nbsp;·&nbsp;
+        <a href="projects.html">See the projects →</a>
+      </p>
+    </div>
+  </section>
+
+  <dialog class="card" id="cardDialog" aria-label="Profile card">
+    <button type="button" class="card__x" data-close-card aria-label="Close">&times;</button>
+    <div class="card__glow" aria-hidden="true"></div>
+    <img class="card__photo" src="public/media/profile.jpg" alt="Mohammed Anaan" decoding="async">
+    <p class="card__status"><b aria-hidden="true">✦</b> Available for work</p>
+    <h2 class="card__name">Mohammed Anaan</h2>
+    <p class="card__role">Full-Stack Developer <span>·</span> AI / ML</p>
+    <p class="card__blurb">
+      Third-year CSE (AI &amp; ML) student building practical projects that solve
+      real-world problems.
+    </p>
+    <ul class="card__chips">
+      <li>React</li><li>Next.js</li><li>Python</li><li>Node.js</li><li>TypeScript</li>
+    </ul>
+    <div class="card__links">
+      <a href="public/doc/resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
+      <a href="https://github.com/anaan-aiml" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/mohammed-anaan-b06b90360/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href="mailto:zeb.begum786@gmail.com">Email</a>
+    </div>
+  </dialog>
+</main>
+
+<footer class="site-foot">
+  <a href="contact.html">Contact</a>
+  <nav class="site-foot__soc" aria-label="Social">
+    <a href="https://github.com/anaan-aiml" target="_blank" rel="me noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/mohammed-anaan-b06b90360/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+    <a href="https://www.instagram.com/anaan_2307_/" target="_blank" rel="me noopener noreferrer">Instagram</a>
+  </nav>
+  <small class="site-foot__c">© 2026 Mohammed Anaan</small>
+</footer>
+
+<script type="module" src="src/nav.js"></script>
+<script type="module" src="src/about.js"></script>
+</body>
+</html>
